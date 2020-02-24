@@ -10,7 +10,7 @@ ResponseBody:
 [
     {
         "image":"http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg",
-        "productname": "华为",
+        "productname": "小米",
         "model": "pruduct 15",
         "price":6666,
         "quantity": 99,
@@ -18,7 +18,7 @@ ResponseBody:
     },
      {
         "image":"http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg",
-        "productname": "苹果",
+        "productname": "大米",
         "model": "xsmax",
         "price":6666,
         "quantity": 99,
@@ -58,7 +58,7 @@ Method：POST
 RequestBody:  
 ```json
 {
-    "productname": "苹果",
+    "productname": "大米",
     "productAbstract": "内容",
     "image":"http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg",
     "model": "xsmax",
@@ -99,7 +99,7 @@ ResponseBody:
 [
     {
         "image":"http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg",
-        "productname": "华为",
+        "productname": "小米",
         "model": "pruduct 15",
         "price":6666,
         "quantity": 99,
@@ -107,7 +107,7 @@ ResponseBody:
     },
      {
         "image":"http://a4.att.hudong.com/21/09/01200000026352136359091694357.jpg",
-        "productname": "苹果",
+        "productname": "大米",
         "model": "xsmax",
         "price":6666,
         "quantity": 99,
@@ -139,19 +139,19 @@ ResponseBody:
 [
     {
         "customerName": "小王",
-        "email": "64329101@qq.com",
+        "email": "1114034411@qq.com",
         "customerGroup":1,
         "ip": "192.168.32.1",
         "status": 1,
          "dateAdded": 1575448390345,
     },
      {
-         "customerName": "小汪",
-        "email": "64329101@qq.com",
+         "customerName": "小博",
+        "email": "1114034411@qq.com",
         "customerGroup":1,
         "ip": "192.168.32.1",
         "status": 1,
-         "dateAdded": 1575448390345,
+         "dateAdded": 15286916406,
     },
 ]
 
@@ -189,8 +189,8 @@ RequestBody:
 ```json
 {
     "username": "admin",
-    "email": "643219101@qq.com",
-    "telephone":13228725698,
+    "email": "1114034411@qq.com",
+    "telephone":1114034411,
     "password": "123456",
     "passwordConfirm":"123456",
 }
@@ -263,8 +263,8 @@ RequestBody:
 ```json
 {
     "username": "admin",
-    "email": "643219101@qq.com",
-    "telephone":13228725698,
+    "email": "1114034411@qq.com",
+    "telephone":1114034411,
 }
 
 ```
@@ -298,9 +298,9 @@ RequestBody:
 ```json
 {
     "username": "admin",
-    "content":"江苏省徐州市",
-    "email": "643219101@qq.com",
-    "telephone":13228725698,
+    "content":"河南省濮阳市",
+    "email": "1114034411@qq.com",
+    "telephone":1114034411,
 }
 
 ```
@@ -336,9 +336,9 @@ RequestBody:
 ```json
 {
     "username": "admin",
-    "content":"江苏省徐州市",
-    "email": "643219101@qq.com",
-    "telephone":13228725698,
+    "content":"河南省濮阳市",
+    "email": "1114034411@qq.com",
+    "telephone":1114034411,
 }
 
 ```
@@ -428,12 +428,12 @@ ResponseBody:
 [
     {
        
-        "email": "643219101@qq.com",
+        "email": "1114034411@qq.com",
         "Customer": "admin",
-        "telephone":13228725698,
+        "telephone":1114034411,
         "address": "上海",
-        "paymentAddress":"江苏徐州",
-        "prductName":"苹果",
+        "paymentAddress":"河南濮阳",
+        "prductName":"大米",
         "model":"xsmax",
         "quantity":1,  
          "total": 1,
@@ -442,12 +442,12 @@ ResponseBody:
     },
      {
           
-        "email": "643219101@qq.com",
+        "email": "1114034411@qq.com",
         "Customer": "admin",
-        "telephone":13228725698,
+        "telephone":1114034411,
         "address": "上海",
-        "paymentAddress":"江苏徐州",
-        "prductName":"华为",
+        "paymentAddress":"河南濮阳",
+        "prductName":"小米",
         "model":"P30",
         "quantity":1,  
          "total": 1,
@@ -530,11 +530,11 @@ RequestBody:
 ```json
 {
     "username": "admin",
-    "email": "643219101@qq.com",
-    "telephone":13228725698,
+    "email": "1114034411@qq.com",
+    "telephone":1114034411,
     "orderId":1,
     "orderDate":1575448390345,
-    "productName":"苹果",
+    "productName":"大米",
     "productModel":"xsmax",
 
 }
@@ -581,7 +581,7 @@ ResponseBody:
             "status": 0,
             "dateAdded":1575448390345,
             "orderId":1,
-            "customer":"汪老板",
+            "customer":"博老板",
         
 
     },
@@ -617,7 +617,7 @@ ResponseBody:
     {
        
             "returnID": 1,
-             "product": "苹果",
+             "product": "大米",
              "model":"xsmax",
             "status": 0,
             "dateAdded":1575448390345,
@@ -631,7 +631,7 @@ ResponseBody:
      {
           
              "returnID": 2,
-             "product": "苹果",
+             "product": "大米",
              "model":"xsmax",
             "status": 0,
             "dateAdded":1575448390345,
