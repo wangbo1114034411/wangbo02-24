@@ -182,10 +182,10 @@ Response Field
 
 
 URL: /customerHou/addCustomer  
-Request Content-Type: application/json(默认)  
-Method：POST  
-
-RequestBody:  
+              Request Content-Type: application/json(默认)  
+              Method：POST  
+              
+              RequestBody:  
 ```json
 {
     "username": "admin",
