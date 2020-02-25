@@ -17,6 +17,8 @@ public interface AdministratorControllerApi {
     public Administrator customerHoulist(String customerName, String email, String customerGroup);
 
 
+    @ApiOperation("登录")
+    public String loginAdmin(String username,String passwod);
 
     @ApiOperation("前端用户注册")
     public String addCustomer(Administrator administrator);
