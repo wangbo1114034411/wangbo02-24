@@ -1,24 +1,43 @@
 package com.wangbo.api;
 
-import com.wangbo.entity.Product;
+import com.wangbo.dto.in.ProductCreateInDTO;
+import com.wangbo.dto.in.ProductSearchInDTO;
+import com.wangbo.dto.in.ProductUpdateInDTO;
+import com.wangbo.dto.out.PageOutDTO;
+import com.wangbo.dto.out.ProductListOutDTO;
+import com.wangbo.dto.out.ProductShowOutDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author wangbo
- * @date 2020-02-24 17:11
+ * @date 2020-02-26 16:30
  */
-@Api(value="产品管理接口",description = "产品管理接口，提供数据模型的管理、查询接口")
+@Api(value = "ProductControllerApi",description = "用户查询添加，登录")
 public interface ProductControllerApi {
 
-    @ApiOperation("商品后端")
-    public Product pruductlist(String productname,String model,double price,int quantity);
+    @ApiOperation(value = "search")
+    public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
+                                                @RequestParam(required = false, defaultValue = "1") Integer pageNum);
 
+    @ApiOperation(value = "getById")
+    public ProductShowOutDTO getById(@RequestParam Integer productId);
 
-    @ApiOperation("商品添加")
-    public String addpruduct(@RequestBody Product product);
+    @ApiOperation(value = "create")
+    public Integer create(@RequestBody ProductCreateInDTO productCreateInDTO);
 
-    @ApiOperation("商品列表展示")
-    public String qianPruductlist();
+    @ApiOperation(value = "update")
+    public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO);
+
+    @ApiOperation(value = "delete")
+    public void delete(@RequestBody Integer productId);
+
+    @ApiOperation(value = "batchDelete")
+    public void batchDelete(@RequestBody List<Integer> productIds);
 }

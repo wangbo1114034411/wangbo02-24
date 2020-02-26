@@ -1,40 +1,55 @@
 package com.wangbo.api;
 
-import com.wangbo.entity.Administrator;
-import com.wangbo.entity.Product;
+import com.wangbo.dto.in.*;
+import com.wangbo.dto.out.AdministratorGetProfileOutDTO;
+import com.wangbo.dto.out.AdministratorListOutDTO;
+import com.wangbo.dto.out.AdministratorShowOutDTO;
+import com.wangbo.dto.out.PageOutDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author wangbo
- * @date 2020-02-24 17:56
+ * @date 2020-02-26 16;15
  */
-@Api(value="用户管理接口",description = "用户管理接口，提供数据模型注册，登录")
+@Api(value = "用户表",description = "用户查询添加，登录")
 public interface AdministratorControllerApi {
 
+    @ApiOperation(value = "用户登录",httpMethod = "GET")
+    public String login(AdministratorLoginInDTO administratorLoginInDTO);
 
-    @ApiOperation("后台客户列表")
-    public Administrator customerHoulist(String customerName, String email, String customerGroup);
+    @ApiOperation(value = "用户查询",httpMethod = "GET")
+    public AdministratorGetProfileOutDTO getProfile(@RequestParam(required = false) Integer adminstratorId);
 
+    @ApiOperation(value = "用户修改",httpMethod = "Post")
+    public void updateProfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO);
 
-    @ApiOperation("登录")
-    public String loginAdmin(String username,String passwod);
+    @ApiOperation(value = "获取用户密码",httpMethod = "GET")
+    public String getPwdResetCode(@RequestParam String email);
 
-    @ApiOperation("前端用户注册")
-    public String addCustomer(Administrator administrator);
+    @ApiOperation(value = "修改密码",httpMethod = "Post")
+    public void resetPwd(@RequestBody AdministratorResetPwdInDTO administratorResetPwdInDTO);
 
+    @ApiOperation(value = "获取用户列表",httpMethod = "GET")
+    public PageOutDTO<AdministratorListOutDTO> getList(@RequestParam Integer pageNum);
 
-    @ApiOperation("前端用户修改")
-    public String updateCustomer(Administrator administrator);
+    @ApiOperation(value = "根据id获取用户列表",httpMethod = "GET")
+    public AdministratorShowOutDTO getById(@RequestParam Integer administratorId);
 
+    @ApiOperation(value = "删除用户数据",httpMethod = "Post")
+    public Integer create(@RequestBody AdministratorCreateInDTO administratorCreateInDTO);
 
+    @ApiOperation(value = "用户修改",httpMethod = "Post")
+    public void update(@RequestBody AdministratorUpdateInDTO administratorUpdateInDTO);
 
-    @ApiOperation("地址添加")
-    public String addAddress(Administrator administrator);
+    @ApiOperation(value = "用户删除",httpMethod = "Post")
+    public void delete(@RequestBody Integer adminstratorId);
 
-
-    @ApiOperation("地址修改")
-    public String updateAddress(Administrator administrator);
-
-
+    public void batchDelete(@RequestBody List<Integer> administratorIds);
 }

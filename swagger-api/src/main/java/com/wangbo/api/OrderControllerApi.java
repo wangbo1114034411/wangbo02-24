@@ -1,23 +1,27 @@
 package com.wangbo.api;
 
-import com.wangbo.entity.Administrator;
-import com.wangbo.entity.Order;
+import com.wangbo.dto.in.OrderSearchInDTO;
+import com.wangbo.dto.out.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author wangbo
- * @date 2020-02-24 18:03
+ * @date 2020-02-26 16:28
  */
-@Api(value="订单管理接口",description = "订单接口")
+@Api(value = "OrderControllerApi",description = "用户查询添加，登录")
 public interface OrderControllerApi {
+    @ApiOperation(value = "search")
+    public PageOutDTO<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO,
+                                              @RequestParam Integer pageNum);
 
-    @ApiOperation("后台订单详细列表")
-    public Order orderListXiangxi(String orderID);
+    @ApiOperation(value = "getById")
+    public OrderShowOutDTO getById(@RequestParam Long orderId);
 
+    @ApiOperation(value = "getInvoiceInfo")
+    public OrderInvoiceShowOutDTO getInvoiceInfo(@RequestParam Long orderId);
 
-
-    @ApiOperation("后台订单历史列表")
-    public Order orderListHistory(String orderID);
-
+    @ApiOperation(value = "getShipInfo")
+    public OrderShipShowOutDTO getShipInfo(@RequestParam Long orderId);
 }

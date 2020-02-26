@@ -1,28 +1,75 @@
 package com.wangbo.entity;
 
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.ToString;
+import java.util.Date;
 
-/**
- * @author wangbo
- * @date 2020-02-24 18:01
- */
-@ApiModel(value = "订单表",description = "用于订单展示等")
-@Data
-@ToString
 public class Order {
-    private int id;
-    private String Customer;
-    private String orderStatus;
-    private String email;
-    private String telephone;
-    private String address;
-    private String paymentAddress;
-    private String prductName;
-    private String model;
-    private String quantity;
-    private double total;
-    private String dateAdded;
-    private String dateModified;
+    private Long orderId;
+
+    private Integer customerId;
+
+    private Byte status;
+
+    private Double totalPrice;
+
+    private Integer rewordPoints;
+
+    private Date createTime;
+
+    private Date updateTime;
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Integer getRewordPoints() {
+        return rewordPoints;
+    }
+
+    public void setRewordPoints(Integer rewordPoints) {
+        this.rewordPoints = rewordPoints;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

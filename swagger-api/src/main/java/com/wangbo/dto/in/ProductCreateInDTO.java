@@ -1,42 +1,26 @@
-package com.wangbo.entity;
+package com.wangbo.dto.in;
 
-public class Product {
-    private Integer productId;
+import java.util.List;
 
+public class ProductCreateInDTO {
     private String productCode;
-
     private String productName;
-
-    private String productAbstract;
-
     private Double price;
-
     private Double discount;
-
     private Integer stockQuantity;
-
     private Byte status;
-
     private String mainPicUrl;
-
     private Integer rewordPoints;
-
     private Integer sortOrder;
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+    private String description;
+    private List<String> otherPicUrls;
 
     public String getProductCode() {
         return productCode;
     }
 
     public void setProductCode(String productCode) {
-        this.productCode = productCode == null ? null : productCode.trim();
+        this.productCode = productCode;
     }
 
     public String getProductName() {
@@ -44,15 +28,7 @@ public class Product {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
-    }
-
-    public String getProductAbstract() {
-        return productAbstract;
-    }
-
-    public void setProductAbstract(String productAbstract) {
-        this.productAbstract = productAbstract == null ? null : productAbstract.trim();
+        this.productName = productName;
     }
 
     public Double getPrice() {
@@ -92,7 +68,7 @@ public class Product {
     }
 
     public void setMainPicUrl(String mainPicUrl) {
-        this.mainPicUrl = mainPicUrl == null ? null : mainPicUrl.trim();
+        this.mainPicUrl = mainPicUrl;
     }
 
     public Integer getRewordPoints() {
@@ -109,5 +85,21 @@ public class Product {
 
     public void setSortOrder(Integer sortOrder) {
         this.sortOrder = sortOrder;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getOtherPicUrls() {
+        return otherPicUrls;
+    }
+
+    public void setOtherPicUrls(List<String> otherPicUrls) {
+        this.otherPicUrls = otherPicUrls;
     }
 }
