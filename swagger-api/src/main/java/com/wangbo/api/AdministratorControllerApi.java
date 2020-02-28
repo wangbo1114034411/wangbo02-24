@@ -48,6 +48,6 @@ public interface AdministratorControllerApi {
 
     @ApiOperation(value = "用户删除",httpMethod = "Post")
     public void delete(@RequestBody Integer adminstratorId);
-
+    @ApiOperation(value = "batchDelete",httpMethod = "Post")
     public void batchDelete(@RequestBody List<Integer> administratorIds);
 }
