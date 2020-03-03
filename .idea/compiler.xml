@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jcart-administration-back" />
+        <module name="jcart-cart-web" />
         <module name="jcart-service-user-auth" />
         <module name="swagger-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jcart-administration-back" target="1.8" />
+      <module name="jcart-cart-web" target="1.8" />
       <module name="jcart-service-user-auth" target="1.8" />
       <module name="jcart-store-back" target="1.8" />
       <module name="swagger-api" target="1.8" />
@@ -21,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="jcart-administration-back" options="-parameters" />
+      <module name="jcart-cart-web" options="-parameters" />
       <module name="jcart-service-user-auth" options="-parameters" />
       <module name="jcart-store-back" options="-parameters" />
       <module name="swagger-api" options="-parameters" />
