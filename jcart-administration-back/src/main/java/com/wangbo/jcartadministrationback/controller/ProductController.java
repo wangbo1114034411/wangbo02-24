@@ -2,6 +2,7 @@ package com.wangbo.jcartadministrationback.controller;
 
 import com.github.pagehelper.Page;
 
+import com.wangbo.api.ProductControllerApi;
 import com.wangbo.dto.in.ProductCreateInDTO;
 import com.wangbo.dto.in.ProductSearchInDTO;
 import com.wangbo.dto.in.ProductUpdateInDTO;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class ProductController {
+public class ProductController implements ProductControllerApi {
 
     @Autowired
     private ProductService productService;

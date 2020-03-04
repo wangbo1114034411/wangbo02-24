@@ -3,7 +3,9 @@ package com.wangbo.controller;
 import com.alibaba.fastjson.JSON;
 
 import com.wangbo.entity.OmsCartItem;
+import com.wangbo.entity.PmsSkuInfo;
 import com.wangbo.service.CartService;
+import com.wangbo.service.SkuService;
 import com.wangbo.util.CookieUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

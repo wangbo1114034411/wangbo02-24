@@ -1,0 +1,38 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml  #mybatis所在路径
+  type-aliases-package: com.wangbo.springcloud.entities #entity别名类
+  mapper-locations:
+    - classpath*:dao/*.xml #mapper映射文件
+
+spring:
+  application:
+    name: microservicecloud-product
+  mail:
+    host: smtp.163.com
+    username: wangbo089086@163.com
+    password: w1114034411
+    default-encoding: utf-8
+    protocol: smtp
+  datasource:
+    url: jdbc:mysql://localhost:3306/clouddb01
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: microservicecloud-8001  #自定义服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+
