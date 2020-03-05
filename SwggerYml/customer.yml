@@ -1,0 +1,220 @@
+swagger: "2.0"
+info:
+  description: Customer
+  version: "1.0.0"
+  title: API-Customer
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /customer:
+    post:
+      summary: 增加Customer
+      parameters:
+      - in: body
+        name: body
+        description: Customer实体
+        required: true
+        schema:
+          $ref: "#/definitions/Customer"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Customer全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiCustomerListResponse'
+  /customer/{customerId}:
+    get:
+      summary: 根据ID查询customer
+      parameters:
+        - name: customerId
+          in: path
+          description: CustomerID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiCustomerResponse'
+    put:
+      summary: 修改Customer
+      parameters:
+        - name: customerId
+          in: path
+          description: CustomerID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Customer实体
+          required: true
+          schema:
+            $ref: "#/definitions/Customer"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Customer
+      parameters:
+        - name: customerId
+          in: path
+          description: CustomerID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /customer/search:
+    post:
+      summary: 根据条件查询Customer列表 
+      parameters:
+        - name: body
+          in: body
+          description: Customer实体类
+          required: true
+          schema:
+            $ref: '#/definitions/Customer'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiCustomerListResponse'
+  /customer/search/{page}/{size}:
+    post:
+      summary: Customer分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/Customer"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiCustomerPageResponse'
+definitions:
+  Customer:
+    type: "object"
+    properties:
+      customer_id:
+        type: "string"        
+        description: ""
+      username:
+        type: "string"        
+        description: ""
+      real_name:
+        type: "string"        
+        description: ""
+      avatar_url:
+        type: "string"        
+        description: ""
+      encrypted_password:
+        type: "string"        
+        description: ""
+      mobile:
+        type: "string"        
+        description: ""
+      mobile_verified:
+        type: "string"        
+        description: ""
+      email:
+        type: "string"        
+        description: ""
+      email_verified:
+        type: "string"        
+        description: ""
+      status:
+        type: "string"        
+        description: ""
+      create_time:
+        type: "string"        
+        description: ""
+      news_subscribed:
+        type: "string"        
+        description: ""
+      reword_points:
+        type: "string"        
+        description: ""
+      default_address_id:
+        type: "string"        
+        description: ""
+
+  CustomerList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Customer'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiCustomerResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Customer'
+  ApiCustomerListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/CustomerList'
+  ApiCustomerPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/CustomerList'

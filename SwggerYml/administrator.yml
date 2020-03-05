@@ -1,0 +1,202 @@
+swagger: "2.0"
+info:
+  description: Administrator
+  version: "1.0.0"
+  title: API-Administrator
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /administrator:
+    post:
+      summary: 增加Administrator
+      parameters:
+      - in: body
+        name: body
+        description: Administrator实体
+        required: true
+        schema:
+          $ref: "#/definitions/Administrator"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Administrator全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiAdministratorListResponse'
+  /administrator/{administratorId}:
+    get:
+      summary: 根据ID查询administrator
+      parameters:
+        - name: administratorId
+          in: path
+          description: AdministratorID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiAdministratorResponse'
+    put:
+      summary: 修改Administrator
+      parameters:
+        - name: administratorId
+          in: path
+          description: AdministratorID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Administrator实体
+          required: true
+          schema:
+            $ref: "#/definitions/Administrator"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Administrator
+      parameters:
+        - name: administratorId
+          in: path
+          description: AdministratorID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /administrator/search:
+    post:
+      summary: 根据条件查询Administrator列表 
+      parameters:
+        - name: body
+          in: body
+          description: Administrator实体类
+          required: true
+          schema:
+            $ref: '#/definitions/Administrator'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiAdministratorListResponse'
+  /administrator/search/{page}/{size}:
+    post:
+      summary: Administrator分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/Administrator"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiAdministratorPageResponse'
+definitions:
+  Administrator:
+    type: "object"
+    properties:
+      administrator_id:
+        type: "string"        
+        description: ""
+      username:
+        type: "string"        
+        description: ""
+      real_name:
+        type: "string"        
+        description: ""
+      email:
+        type: "string"        
+        description: ""
+      encrypted_password:
+        type: "string"        
+        description: ""
+      status:
+        type: "string"        
+        description: ""
+      create_time:
+        type: "string"        
+        description: ""
+      avatar_url:
+        type: "string"        
+        description: ""
+
+  AdministratorList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Administrator'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiAdministratorResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Administrator'
+  ApiAdministratorListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/AdministratorList'
+  ApiAdministratorPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/AdministratorList'

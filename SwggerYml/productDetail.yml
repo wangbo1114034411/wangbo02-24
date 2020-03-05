@@ -1,0 +1,187 @@
+swagger: "2.0"
+info:
+  description: ProductDetail
+  version: "1.0.0"
+  title: API-ProductDetail
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /productDetail:
+    post:
+      summary: 增加ProductDetail
+      parameters:
+      - in: body
+        name: body
+        description: ProductDetail实体
+        required: true
+        schema:
+          $ref: "#/definitions/ProductDetail"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: ProductDetail全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiProductDetailListResponse'
+  /productDetail/{productDetailId}:
+    get:
+      summary: 根据ID查询productDetail
+      parameters:
+        - name: productDetailId
+          in: path
+          description: ProductDetailID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiProductDetailResponse'
+    put:
+      summary: 修改ProductDetail
+      parameters:
+        - name: productDetailId
+          in: path
+          description: ProductDetailID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: ProductDetail实体
+          required: true
+          schema:
+            $ref: "#/definitions/ProductDetail"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除ProductDetail
+      parameters:
+        - name: productDetailId
+          in: path
+          description: ProductDetailID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /productDetail/search:
+    post:
+      summary: 根据条件查询ProductDetail列表 
+      parameters:
+        - name: body
+          in: body
+          description: ProductDetail实体类
+          required: true
+          schema:
+            $ref: '#/definitions/ProductDetail'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiProductDetailListResponse'
+  /productDetail/search/{page}/{size}:
+    post:
+      summary: ProductDetail分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/ProductDetail"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiProductDetailPageResponse'
+definitions:
+  ProductDetail:
+    type: "object"
+    properties:
+      product_id:
+        type: "string"        
+        description: ""
+      description:
+        type: "string"        
+        description: ""
+      other_pic_urls:
+        type: "string"        
+        description: ""
+
+  ProductDetailList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/ProductDetail'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiProductDetailResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/ProductDetail'
+  ApiProductDetailListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/ProductDetailList'
+  ApiProductDetailPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/ProductDetailList'

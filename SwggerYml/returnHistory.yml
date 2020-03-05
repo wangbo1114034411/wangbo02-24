@@ -1,0 +1,196 @@
+swagger: "2.0"
+info:
+  description: ReturnHistory
+  version: "1.0.0"
+  title: API-ReturnHistory
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /returnHistory:
+    post:
+      summary: 增加ReturnHistory
+      parameters:
+      - in: body
+        name: body
+        description: ReturnHistory实体
+        required: true
+        schema:
+          $ref: "#/definitions/ReturnHistory"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: ReturnHistory全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiReturnHistoryListResponse'
+  /returnHistory/{returnHistoryId}:
+    get:
+      summary: 根据ID查询returnHistory
+      parameters:
+        - name: returnHistoryId
+          in: path
+          description: ReturnHistoryID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiReturnHistoryResponse'
+    put:
+      summary: 修改ReturnHistory
+      parameters:
+        - name: returnHistoryId
+          in: path
+          description: ReturnHistoryID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: ReturnHistory实体
+          required: true
+          schema:
+            $ref: "#/definitions/ReturnHistory"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除ReturnHistory
+      parameters:
+        - name: returnHistoryId
+          in: path
+          description: ReturnHistoryID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /returnHistory/search:
+    post:
+      summary: 根据条件查询ReturnHistory列表 
+      parameters:
+        - name: body
+          in: body
+          description: ReturnHistory实体类
+          required: true
+          schema:
+            $ref: '#/definitions/ReturnHistory'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiReturnHistoryListResponse'
+  /returnHistory/search/{page}/{size}:
+    post:
+      summary: ReturnHistory分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/ReturnHistory"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiReturnHistoryPageResponse'
+definitions:
+  ReturnHistory:
+    type: "object"
+    properties:
+      return_history_id:
+        type: "string"        
+        description: ""
+      return_id:
+        type: "string"        
+        description: ""
+      time:
+        type: "string"        
+        description: ""
+      return_status:
+        type: "string"        
+        description: ""
+      comment:
+        type: "string"        
+        description: ""
+      customer_notified:
+        type: "string"        
+        description: ""
+
+  ReturnHistoryList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/ReturnHistory'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiReturnHistoryResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/ReturnHistory'
+  ApiReturnHistoryListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/ReturnHistoryList'
+  ApiReturnHistoryPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/ReturnHistoryList'

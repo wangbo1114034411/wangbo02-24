@@ -1,0 +1,196 @@
+swagger: "2.0"
+info:
+  description: Address
+  version: "1.0.0"
+  title: API-Address
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /address:
+    post:
+      summary: 增加Address
+      parameters:
+      - in: body
+        name: body
+        description: Address实体
+        required: true
+        schema:
+          $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Address全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiAddressListResponse'
+  /address/{addressId}:
+    get:
+      summary: 根据ID查询address
+      parameters:
+        - name: addressId
+          in: path
+          description: AddressID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiAddressResponse'
+    put:
+      summary: 修改Address
+      parameters:
+        - name: addressId
+          in: path
+          description: AddressID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Address实体
+          required: true
+          schema:
+            $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Address
+      parameters:
+        - name: addressId
+          in: path
+          description: AddressID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /address/search:
+    post:
+      summary: 根据条件查询Address列表 
+      parameters:
+        - name: body
+          in: body
+          description: Address实体类
+          required: true
+          schema:
+            $ref: '#/definitions/Address'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiAddressListResponse'
+  /address/search/{page}/{size}:
+    post:
+      summary: Address分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiAddressPageResponse'
+definitions:
+  Address:
+    type: "object"
+    properties:
+      address_id:
+        type: "string"        
+        description: ""
+      customer_id:
+        type: "string"        
+        description: ""
+      receiver_name:
+        type: "string"        
+        description: ""
+      receiver_mobile:
+        type: "string"        
+        description: ""
+      content:
+        type: "string"        
+        description: ""
+      tag:
+        type: "string"        
+        description: ""
+
+  AddressList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Address'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiAddressResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Address'
+  ApiAddressListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/AddressList'
+  ApiAddressPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/AddressList'

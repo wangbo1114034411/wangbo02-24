@@ -1,0 +1,229 @@
+swagger: "2.0"
+info:
+  description: Return
+  version: "1.0.0"
+  title: API-Return
+host: [path_3].wangbo.com
+basePath: /clouddb01
+paths:
+  /return:
+    post:
+      summary: 增加Return
+      parameters:
+      - in: body
+        name: body
+        description: Return实体
+        required: true
+        schema:
+          $ref: "#/definitions/Return"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Return全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiReturnListResponse'
+  /return/{returnId}:
+    get:
+      summary: 根据ID查询return
+      parameters:
+        - name: returnId
+          in: path
+          description: ReturnID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiReturnResponse'
+    put:
+      summary: 修改Return
+      parameters:
+        - name: returnId
+          in: path
+          description: ReturnID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Return实体
+          required: true
+          schema:
+            $ref: "#/definitions/Return"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Return
+      parameters:
+        - name: returnId
+          in: path
+          description: ReturnID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /return/search:
+    post:
+      summary: 根据条件查询Return列表 
+      parameters:
+        - name: body
+          in: body
+          description: Return实体类
+          required: true
+          schema:
+            $ref: '#/definitions/Return'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiReturnListResponse'
+  /return/search/{page}/{size}:
+    post:
+      summary: Return分页
+      parameters:
+        - name: page
+          in: path
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: path
+          description: 页大小
+          required: true
+          type: integer
+          format: int32
+        - name: body
+          in: body
+          description: 查询条件
+          required: true
+          schema:
+            $ref: "#/definitions/Return"
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/ApiReturnPageResponse'
+definitions:
+  Return:
+    type: "object"
+    properties:
+      return_id:
+        type: "string"        
+        description: ""
+      order_id:
+        type: "string"        
+        description: ""
+      order_time:
+        type: "string"        
+        description: ""
+      customer_id:
+        type: "string"        
+        description: ""
+      customer_name:
+        type: "string"        
+        description: ""
+      mobile:
+        type: "string"        
+        description: ""
+      email:
+        type: "string"        
+        description: ""
+      status:
+        type: "string"        
+        description: ""
+      action:
+        type: "string"        
+        description: ""
+      product_code:
+        type: "string"        
+        description: ""
+      product_name:
+        type: "string"        
+        description: ""
+      quantity:
+        type: "string"        
+        description: ""
+      reason:
+        type: "string"        
+        description: ""
+      opened:
+        type: "string"        
+        description: ""
+      comment:
+        type: "string"        
+        description: ""
+      create_time:
+        type: "string"        
+        description: ""
+      update_time:
+        type: "string"        
+        description: ""
+
+  ReturnList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Return'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiReturnResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Return'
+  ApiReturnListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/ReturnList'
+  ApiReturnPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/ReturnList'
