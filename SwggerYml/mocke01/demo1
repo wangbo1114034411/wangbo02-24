@@ -1,0 +1,19 @@
+let Mock=require('mockjs')
+let data=Mock.mock({
+    'list|3':[
+        {
+            'id|+1':1,
+            'name':'@cname',
+            'point|1-100':0,
+            'birthday':'@date',
+            'title':'@title',
+            'url':'@url',
+            'ip':'@ip',
+            'email':'@email',
+            'area':'@region',
+            'address':'@county(true)'
+        }
+    ]
+})
+
+console.log(JSON.stringify(data,null,2));

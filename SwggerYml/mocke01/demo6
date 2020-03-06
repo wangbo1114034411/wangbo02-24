@@ -1,0 +1,8 @@
+let Mock=require('mockjs')
+let data=Mock.mock({
+                     "code": "@integer(60, 100)",
+                     "flag": "@boolean",
+                     "message": "@string"
+                   })
+
+console.log(JSON.stringify(data,null,2));

@@ -1,0 +1,19 @@
+let Mock=require('mockjs')
+ let data=Mock.mock({
+              "code": "@integer(60, 100)",
+              "flag": "@boolean",
+              "message": "@string",
+              "data": {
+                "total": "@integer(60, 100)",
+                "rows": [{
+                  "address_id": "@string",
+                  "customer_id": "@string",
+                  "receiver_name": "@string",
+                  "receiver_mobile": "@string",
+                  "content": "@string",
+                  "tag": "@string"
+                }]
+              }
+            })
+
+console.log(JSON.stringify(data,null,2));
